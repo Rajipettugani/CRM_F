@@ -2,7 +2,10 @@ import axios from 'axios'
 import { getToken, clearToken } from '../utils/auth'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  //baseURL: 'http://localhost:8000/api'
+  baseURL: import.meta.env.VITE_BACKEND_URL, // for Vite projects
+  // or process.env.REACT_APP_API_URL for Create React App
+  withCredentials: true,
 })
 
 api.interceptors.request.use(cfg => {
